@@ -5,14 +5,18 @@
         <div class="text-area">
             
             {% if dashboard %}
-            {% for key in dashboard %}
-        
-            <h1>{{key}}</h1>
-            <h1>{{dashboard[key]}}</h1>
-           
-            {% endfor %}
+            {% for key in dashboard %}    
+            <div>
+                <h1>{{key}}</h1>
+                <h1>{{dashboard[key]}}</h1>
+            </div>
 
-            {% else %}
+            {% endfor %}
+            <div>
+                <h1 id="myTitle"></h1>
+            </div>
+
+            {%else%}
             <h1 id="myTitle"></h1>
 
             {% endif %}
@@ -29,18 +33,22 @@
 
 <script>
 
+    
+
 // 获取input和submit按钮的DOM元素
 var myInput = document.getElementById('myInput');
 var myButton = document.getElementById('myButton');
 
+myInput.focus();
 // 监听input元素的"keydown"事件
 myInput.addEventListener('keydown', function(event) {
   // 判断按下的是否是回车键
   if (event.keyCode === 13) {
     // 阻止默认行为（即阻止input元素的换行）
-    event.preventDefault();
+    event.preventDefault();   
     // 触发submit按钮的"click"事件
     myButton.click();
+    
   }
 });
        
@@ -57,7 +65,8 @@ function handleSubmit(event) {
     document.getElementById("myTitle").textContent = inputValue;
     return true;
 }
-        
+
+
 </script>
           
     
