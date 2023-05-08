@@ -12,13 +12,13 @@ import os
 
 @app.route("/",methods=["GET", "POST"])
 def home():
-    dashboard=[]
+    
     if request.method == 'POST':
+        dashboard={}
         question = request.form.get('question')
-        dashboard.append(question)
         print(question)
         answer = chatbot.get_response(question)
-        dashboard.append(answer)
+        dashboard[question]=answer
         print(answer)
         print(dashboard)
         return render_template("homepage.html", dashboard=dashboard, question=question, answer=answer)

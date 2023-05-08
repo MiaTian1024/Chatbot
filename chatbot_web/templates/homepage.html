@@ -3,22 +3,62 @@
 {% block content %}
     <div class="container">
         <div class="text-area">
+            
             {% if dashboard %}
-            {% for dash in dashboard %}
+            {% for key in dashboard %}
         
-            <h1>{{dash}}</h1>
+            <h1>{{key}}</h1>
+            <h1>{{dashboard[key]}}</h1>
            
             {% endfor %}
+
+            {% else %}
+            <h1 id="myTitle"></h1>
 
             {% endif %}
         </div>
     
         <div class="input-area">
-            <form action="/" method="POST">
-                <input type="text" name="question" placeholder="Send a message.">
-                <button type="submit">Send</button>
+            <form id="myForm" action="/" method="POST" onsubmit="handleSubmit(event)">
+                <input id="myInput" type="text" onkeydown="handleKeyDown(event)" name="question" placeholder="Send a message.">
+                <button id="myButton" type="submit">Send</button>
             </form>
         </div>
     </div>
+
+
+<script>
+
+// 获取input和submit按钮的DOM元素
+var myInput = document.getElementById('myInput');
+var myButton = document.getElementById('myButton');
+
+// 监听input元素的"keydown"事件
+myInput.addEventListener('keydown', function(event) {
+  // 判断按下的是否是回车键
+  if (event.keyCode === 13) {
+    // 阻止默认行为（即阻止input元素的换行）
+    event.preventDefault();
+    // 触发submit按钮的"click"事件
+    myButton.click();
+  }
+});
+       
+function handleKeyDown(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("mySubmit").click();
+        }
+}
+          
+
+function handleSubmit(event) {
+    var inputValue = document.getElementById("myInput").value;
+    document.getElementById("myTitle").textContent = inputValue;
+    return true;
+}
+        
+</script>
+          
     
 {% endblock %}
