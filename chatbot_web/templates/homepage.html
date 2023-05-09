@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
     <div class="container">
         <div class="text-area">
             
@@ -23,8 +24,8 @@
         </div>
     
         <div class="input-area">
-            <form id="myForm" action="/" method="POST" onsubmit="handleSubmit(event)">
-                <input id="myInput" type="text" onkeydown="handleKeyDown(event)" name="question" placeholder="Send a message.">
+            <form id="myForm" action="/home" method="POST" onsubmit="handleSubmit(event)">
+                <input id="myInput" type="text" onkeydown="handleKeyDown(event)" name="question" placeholder="Type message...">
                 <button id="myButton" type="submit">Send</button>
             </form>
         </div>
@@ -32,9 +33,7 @@
 
 
 <script>
-
-    
-
+  
 // 获取input和submit按钮的DOM元素
 var myInput = document.getElementById('myInput');
 var myButton = document.getElementById('myButton');

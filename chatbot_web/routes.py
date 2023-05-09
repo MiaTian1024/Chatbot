@@ -9,10 +9,14 @@ from chatbot_web import chatbot
 import threading
 import os
 
+@app.route("/")
+def loading():
+    return render_template("loading.html")
+
+
 dashboard={}
-@app.route("/",methods=["GET", "POST"])
-def home():
-    
+@app.route("/home",methods=["GET", "POST"])
+def home():   
     if request.method == 'POST':
         
         question = request.form.get('question')
